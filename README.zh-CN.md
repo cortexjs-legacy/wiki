@@ -27,4 +27,4 @@ Cortex 相关的文档及使用帮助，涵盖从基本使用，到开发细节�
 
 ### 使用 cortex 开发 web 模块
 
-- [最佳实践和规范建议](./zh-CN/create-web-packages/best-practice.md)
+- [最佳实践和规范建议](./zh-CN/create-web-packages/best-practices.md)
