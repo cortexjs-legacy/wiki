@@ -1,6 +1,6 @@
 # Cortex Wiki
 
-[中文版](./README.zh-CN.md)
+[简体中文](./README.zh-CN.md)
 
 Have any questions, suggestions, or even critisms? You may open an issue, and  you will get our reply ASAP during 9:00pm - 5:00am EDT.
 

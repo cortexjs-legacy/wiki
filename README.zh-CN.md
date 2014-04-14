@@ -13,7 +13,7 @@ Cortex 相关的文档及使用帮助，涵盖从基本使用，到开发细节�
 - [Google Groups](https://groups.google.com/group/cortexjs)
 - [邮件](cortexjs@googlegroups.com)
 - IRC：`#cortexjs` on freenode；[网页版](http://webchat.freenode.net/?channels=cortexjs)
-- QQ群：315885820，加入麻烦自我介绍
+- QQ群：315885820，麻烦加入的时候先自我介绍哦
 
 ## 目录
 
@@ -28,3 +28,7 @@ Cortex 相关的文档及使用帮助，涵盖从基本使用，到开发细节�
 ### 使用 cortex 开发 web 模块
 
 - [最佳实践和规范建议](./zh-CN/create-web-packages/best-practices.md)
+
+### Cortex 设计思路及原则
+
+- [Cortex项目目标](./zh-CN/design-principle/project-goals.md)
