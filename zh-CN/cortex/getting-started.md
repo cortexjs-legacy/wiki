@@ -95,7 +95,7 @@ cortex server
 
 ## 示例项目
 
-你可以访问 cortexjs/samples 项目，来查看上面的 hello world 项目，以及更多的其他示例项目。
+你可以访问 [cortexjs/samples](https://github.com/cortexjs/samples) 项目，来查看上面的 hello world 项目，以及更多的其他示例项目。
 
 这些项目中，会包含详细的注释，以及操作说明。
 
