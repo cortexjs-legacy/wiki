@@ -44,7 +44,7 @@ Please answer the following:
 其他的提问，事实上所有的设置，都可以使用默认，即一路回车到底，因为我们后来还在 package.json 文件中来修改它们。
 
 
-#### 安装依赖：jQuery
+#### 安装依赖：例如 jQuery
 
 我们想要用 jQuery，在 `<body>` 中插入文字。我们先安装 jQuery
 
@@ -80,7 +80,9 @@ facade({
 
 #### 运行 cortex build
 
-Cortex build 会进行一些必要的构建工作，也会去调用用户自定义的构建命令，构建会让 node.js 风格的代码能够在浏览器端正常运行
+Cortex build 会进行一些必要的构建工作，也会去调用用户自定义的构建命令，构建会让 node.js 风格的代码能够在浏览器端正常运行。
+
+同时，你能够通过 `cortex watch` 命令来监听文件的变化，当文件内容发生变化的时候，会自动执行 `cortex build` 命令。
 
 #### 浏览结果
 
