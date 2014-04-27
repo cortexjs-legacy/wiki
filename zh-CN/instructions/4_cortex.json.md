@@ -1,20 +1,63 @@
-# package.json
+# cortex.json
 
-这里将说明 package.json 文件中各个属性的用法及含义。
+这里将说明 cortex 文件中各个属性的用法及含义。
 
-请注意，package.json 文件中的所有定义，需要完全严格遵守 [JSON](http://www.json.org/) 语法，否则 cortex 会有相关报错信息。
+请注意，cortex.json 文件中的所有定义，需要完全严格遵守 [JSON](http://www.json.org/) 语法，否则 cortex 会有相关报错信息。
 
-## 规则说明
+```json
+{
+  "name": "calendar",
+  "description": "creates flexiable calendars.",
+  "version": "1.0.2",
+  "main": "lib/calendar.js",
+  "dependencies": {
+  	"jquery": "~1.9.2"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "keywords": [
+    "ui",
+    "calendar"
+  ],
+  "directories": {
+    "css": "css"
+  }
+}
+```
 
-1. 为了避免跟原有的 package.json 的属性冲突，我们加入了一个新的命名空间 `'cortex'`。若未特别说明，下面的属性都是在 `'cortex'` 这个 field 之下。
-2. cortex 会优先读取 `'cortex'` field 中的属性，若读取不到，会尝试去读取 package.json 根中的属性，如果仍然读取不到，则会认为是没有定义。
+## name
+
+必须为一个包定义一个 `name`
+
+## version
+
+这个属性必须被定义，它用来描述当前包的版本信息。
+
+为了让他人能够更加安全的使用你的组件，请严格遵循 [语义化版本控制](http://semver.org/lang/zh-TW/) 来设定 `version` 的值。
+
+## description
+
+类型 `string`
+
+为了让其他人更好的使用你的组件，你应该简要地描述该组件包的作用。
+
+## keywords
+
+类型 `Array.<string>`
+
+为了让你的组件包能够更加精确地被用户搜索到，你应该设置这个属性。
+
+## <del>remotes</del>, <del>registry</del>
+
+cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中，我们**严格地区分项目配置与开发环境配置**，不希望任何这方面的混用。如果你需要改变源服务器的地址，可以使用 [`cortex config`](../cortex/commands/cortex-config.md) 命令。
 
 
 ## main
 
 类型：`path`
 
-它定义了当前模块的主入口 JavaScript 文件，该文件的 `exports` 变量会作为 `require()` 方法的返回值。 
+它定义了当前模块的主入口 JavaScript 文件，该文件的 `exports` 变量会作为 `require()` 方法的返回值。类似于 `package.main`。
 
 ## entries
 
@@ -85,9 +128,11 @@
 
 但需要注意的是，如果 `scripts.prebuild`（下面会讲到）已经定义，那么在执行 cortex build 命令的时候，仍然会执行 `scripts.prebuild` 的脚本 ———— 但会跳过 cortex 预设的预编译脚本。
 
-如果你想要跳过 cortex 自建的 “编译器” 这是最推荐的方式。当然，大多数的情况下，建议不要这样做。
+如果你想要跳过 cortex 自建的 “编译器” 这是最推荐的方式。
 
-### directories.lib
+**当然，大多数的情况下，如果你不了解接下来会发生什么，非常建议不要这样做。**
+
+### <del>directories.lib</del>
 
 默认为 `"lib"`
 
@@ -138,7 +183,7 @@
 
 #### 特别说明
 
-绝大多数情况下，你 **不会也不建议** 手工修改这个属性，你可以使用 `cortex install` 的 '--save' 参数，使用该参数后，不仅会将指定的模块安装到本地电脑，同时也会将模块名字和版本信息存储到当前模块的 `cortex.dependencies` 中。
+绝大多数情况下，你 **不需要也非常不建议** 手工修改这个属性，你可以使用 `cortex install` 的 `--save` 参数，使用该参数后，不仅会将指定的模块安装到本地电脑，同时也会将模块名字和版本信息存储到当前 cortex.json 的 `dependencies` 中。
 
 ```sh
 cortex install jquery --save
@@ -187,3 +232,12 @@ cortex install jquery --save
 	}
 }
 ```
+
+## 补充说明 
+
+如果 cortex 检测不到 cortex.json 的存在，则会尝试去获取 package.json 中的 `cortex` 属性。
+
+**但是我们非常不推荐这么做，并且有可能在未来的某个版本不再支持。**
+
+1. 为了避免跟原有的 package.json 的属性冲突，我们加入了一个新的命名空间 `'cortex'`。若未特别说明，下面的属性都是在 `'cortex'` 这个 field 之下。
+2. 对于某一个特定的属性，cortex 会优先读取 `'cortex'` field 中的属性，若读取不到，会尝试去读取 package.json 中的属性，如果仍然读取不到，则会认为是没有定义。
