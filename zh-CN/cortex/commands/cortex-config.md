@@ -73,3 +73,15 @@ cortex config get colors
 #### edit
 
 在编辑器中打开配置文件。打开什么编辑器，跟当前用户系统的设置有关。
+
+
+## 场景说明
+
+### 设置用户信息
+
+```bash
+cortex config set username <your-username>
+cortex config set password <your-password>
+```
+
+另外，你可以通过 `cortex adduser` 命令来进行交互操作。
