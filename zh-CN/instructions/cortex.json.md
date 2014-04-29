@@ -140,7 +140,7 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 
 ### directories.css
 
-默认为 `"css"`
+无默认值
 
 它用来说明 CSS 文件所存放的目录。
 
