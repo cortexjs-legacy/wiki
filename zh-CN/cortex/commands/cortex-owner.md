@@ -1,4 +1,4 @@
-# owner
+# cortex-owner(1)
 
 管理包的owner
 

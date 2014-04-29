@@ -1,4 +1,4 @@
-# cortex-profile
+# cortex-profile(1)
 
 <!-- Manage cortex profiles. Profiles are set of frequent configurations which you can switch between. -->
 

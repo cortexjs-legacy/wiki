@@ -1,4 +1,4 @@
-# adduser
+# cortex-adduser(1)
 
 添加用户到profile中，在当前机器上用这个帐号登陆。只有在登陆之后才能使用 _publish_ 等命令。
 

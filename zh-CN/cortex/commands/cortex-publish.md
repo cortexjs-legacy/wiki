@@ -5,9 +5,8 @@
 ## 概述
 
 ``` bash
-    cortex publish
-    cortex publish <tarball>
-    cortex publish [--cwd <path>]
+cortex publish
+cortex publish [--cwd <path>]
 ```
 
 ## 描述
