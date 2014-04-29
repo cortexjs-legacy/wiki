@@ -23,12 +23,12 @@ Cortex 相关的文档及使用帮助，涵盖从基本使用，到开发细节�
 - [新手指引](./zh-CN/cortex/getting-started.md)
 - [使用手册 ...](./zh-CN/instructions/)
 - [常见问题](./zh-CN/instructions/faq.md)
-- [示例项目](https://github.com/cortexjs/wiki)
+- [示例项目](https://github.com/cortexjs/samples)
 - [提交问题](https://github.com/cortexjs/cortex/issues/new)
 
 ### 周边项目
 
-官方周边项目 (What's comming...)
+官方周边项目 (What's coming...)
 
 
 ### 使用 cortex 开发 web 模块
@@ -43,7 +43,8 @@ Cortex 相关的文档及使用帮助，涵盖从基本使用，到开发细节�
 
 ### Cortex 核心开发者手册
 
-- [核心开发者手册 ...](./en-US/developers/)
+- [核心开发者手册 ...](./zh-CN/developers/)
+- [核心开发规范 ...](https://github.com/cortexjs/dev-standards/zh-CN)
 
 
 ## 帮助我们完善 Wiki
