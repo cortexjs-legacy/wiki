@@ -43,6 +43,17 @@ cortex help install
 
 目前下面的命令是以插件的形式安装
 
-- [cortex-search(1)](./cortex-search)   [repo](cortexjs/cortex-search)
-- [cortex-shrinkwrap(1)](./cortex-shrinkwrap.md)  [repo](cortexjs/cortex-shrinkwrap)
-- [cortex-test(1)](./cortex-test.md)  [repo](cortexjs/cortex-test)
+
+### 如何安装 cortex 插件？
+
+以 `cortex-test` 为例：
+
+```bash
+$ npm install -g cortex-test
+```
+
+### 官方插件
+
+- [cortex-search(1)](https://github.com/cortexjs/cortex-search)
+- [cortex-shrinkwrap(1)](https://github.com/cortexjs/cortex-shrinkwrap)
+- [cortex-test(1)](https://github.com/cortexjs/cortex-test)
