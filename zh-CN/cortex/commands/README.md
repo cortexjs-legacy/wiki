@@ -38,3 +38,11 @@ cortex help install
 - [cortex-profile(1)](./cortex-profile.md)
 - [cortex-adduser(1)](./cortex-adduser.md)
 - [cortex-owner(1)](./cortex-owner.md)
+
+## cortex 其他命令
+
+目前下面的命令是以插件的形式安装
+
+- [cortex-search(1)](./cortex-search)   [repo](cortexjs/cortex-search)
+- [cortex-shrinkwrap(1)](./cortex-shrinkwrap.md)  [repo](cortexjs/cortex-shrinkwrap)
+- [cortex-test(1)](./cortex-test.md)  [repo](cortexjs/cortex-test)
