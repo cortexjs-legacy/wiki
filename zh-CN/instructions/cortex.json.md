@@ -11,7 +11,7 @@
   "version": "1.0.2",
   "main": "lib/calendar.js",
   "dependencies": {
-  	"jquery": "~1.9.2"
+    "jquery": "~1.9.2"
   },
   "devDependencies": {
     "mocha": "*"
@@ -87,10 +87,10 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 
 ```json
 {
-	"entries": [
-		"entries/*.js", 
-		"pages/a.js"
-	]
+  "entries": [
+    "entries/*.js", 
+    "pages/a.js"
+  ]
 } 
 ```
 		
@@ -101,11 +101,13 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 
 类型： `Array.<Path>`，默认值为：
 
-	[
-		'.git',
-        '.svn',
-        '.DS_Store'
-	]
+```js
+[
+  '.git',
+  '.svn',
+  '.DS_Store'
+]
+```
 
 它会告诉 cortex，在发布到 cortexjs.org（或者你自己搭建的服务器）的时候，需要忽略哪些文件。
 
@@ -134,8 +136,6 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 
 ### <del>directories.lib</del>
 
-默认为 `"lib"`
-
 目前这个值没有直接使用，而更多地根据 `cortex.main` 属性来确定入口 JavaScript 文件的位置。
 
 ### directories.css
@@ -152,16 +152,14 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 
 ```json
 {
-	"cortex": {
-		"scripts": {
-			"prebuild": [
-				"grunt less"
-			]
-		},
-		"directories": {
-			"css": "built_css"
-		}
-	}
+  "scripts": {
+    "prebuild": [
+      "grunt less"
+    ]
+  },
+  "directories": {
+    "css": "built_css"
+  }
 }
 ```
 
@@ -214,9 +212,9 @@ cortex install jquery --save
 
 ```json
 {
-	"scripts": {
-	    "build": "grunt"
-	}
+  "scripts": {
+    "build": "grunt"
+  }
 }
 ```
 
@@ -224,12 +222,12 @@ cortex install jquery --save
 
 ```json
 {
-	"scripts": {
-	    "prebuild": [
-	        "grunt dev",
-	        "grunt"
-	    ]
-	}
+  "scripts": {
+    "prebuild": [
+      "grunt dev",
+      "grunt"
+    ]
+  }
 }
 ```
 
