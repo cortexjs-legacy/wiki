@@ -185,10 +185,11 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 
 假若项目结构为：
 
-```
--- source/
-        |-- avatar.png
--- index.js
+```text
+root/
+   |-- source/
+            |-- avatar.png
+   |-- index.js
 ```
 
 cortex.json:
