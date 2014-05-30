@@ -178,7 +178,7 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 
 #### 版本要求
 
-Cortex 3.27.0 及以上。
+Cortex 3.27.0 及以上，neuron 5.1.0 及以上。
 
 
 ### directories.src
