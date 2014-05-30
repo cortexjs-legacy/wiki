@@ -172,14 +172,18 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 无默认值。如果这个值被定义了，但是 `directories.template` 对应的目录不存在，则会报错。
 
 
-在 `cortex 3.27.0` 之后，如果 `directories.template` 已经定义，那么会尝试将这个值所对应的目录进行发布。
+如果 `directories.template` 已经定义，那么会尝试将这个值所对应的目录进行发布。
 
 在将来的版本中，`directories.template` 将会有特殊的作用，因此避免将非模板的文件放到该目录中。
+
+#### 版本要求
+
+Cortex 3.27.0 及以上。
 
 
 ### directories.src
 
-用来存放除 JavaScript，CSS，及模板文件之外的资源文件。该目录下的文件，可以通过 `require.resolve(path)` 来获取。
+用来存放除 JavaScript，CSS，及模板文件之外的资源文件。该目录下的文件，可以通过 `require.resolve(path)` 来获取（要求 [neuron](https://github.com/kaelzhang/neuron) 版本至少为 5.1.0）。
 
 无默认值，如果这个值被定义了，但是 `directories.src` 对应的目录不存在，则会报错。
 
@@ -218,6 +222,10 @@ var default_avatar = require.resolve('./source/avatar.png');
 我们需要能够根据实际情况——比如 CDN 服务出现故障，某个城市用户无法访问静态文件——能够快速地切换所有的静态文件的域名，甚至是 CDN 运营商，这就要求我们的代码中不会出现 **硬代码** 。
 
 `directories` 的设计，目的是要让每个模块本身是内聚的。
+
+#### 版本要求
+
+Cortex 3.27.0 及以上。
 
 ## dependencies
 
