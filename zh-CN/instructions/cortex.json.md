@@ -14,7 +14,7 @@
     "jquery": "~1.9.2"
   },
   "devDependencies": {
-    "mocha": "*"
+    "assert": "*"
   },
   "keywords": [
     "ui",
@@ -73,7 +73,7 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 
 而设计 entries 的目的，是能够让 `main` 文件能够去动态加载（`require.async`）这些模块，并且在使用的时候再去加载这些模块。
 
-但是需要特别指出的是，**禁止外部模块调用** entry 文件。
+但是需要特别指出的是，**禁止调用外部模块的** entry 文件。
 
 #### 用法
 
@@ -142,7 +142,7 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 
 无默认值
 
-它用来说明 CSS 文件所存放的目录。
+它用来说明 CSS 文件所存放的目录。如果这个值被定义了，但是 `directories.css` 对应的目录不存在，则会报错。
 
 #### 特殊说明
 
@@ -163,15 +163,54 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 }
 ```
 
-并且将 less 脚本编译到 `'built_css'` 目录
+并且将 less 脚本编译到 `'built_css'` 目录。
 
 ### directories.template
 
-默认为 `"template"`
-
 用来存放模板文件。
 
-目前这个属性并没有使用，但在未来某个项目里程碑中，可能会很快用到它。
+无默认值。如果这个值被定义了，但是 `directories.template` 对应的目录不存在，则会报错。
+
+
+在 `cortex 3.27.0` 之后，如果 `directories.template` 已经定义，那么会尝试将这个值所对应的目录进行发布。
+
+在将来的版本中，`directories.template` 将会有特殊的作用，因此避免将非模板的文件放到该目录中。
+
+
+### directories.src
+
+用来存放除 JavaScript，CSS，及模板文件之外的资源文件。该目录下的文件，可以通过 `require.resolve(path)` 来获取。
+
+无默认值，如果这个值被定义了，但是 `directories.src` 对应的目录不存在，则会报错。
+
+假若项目结构为：
+
+```
+-- source/
+        |-- avatar.png
+-- index.js
+```
+
+cortex.json:
+
+```json
+{
+  "directories": {
+    "src": "source"
+  }
+}
+```
+
+index.js 中的代码片段：
+
+```js
+// Cortex 的一个设计原则就是，不能违背开发者的直觉。
+// 在开发的过程中，我们只需要去关心相对于当前的 JavaScript 文件，相对路径是如何来写就 ok。
+var default_avatar = require.resolve('./source/avatar.png');
+
+// -> `default_avatar` 会得到一个绝对路径。
+```
+
 
 ## dependencies
 
