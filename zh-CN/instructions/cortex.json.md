@@ -57,7 +57,9 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 
 类型：`path`
 
-它定义了当前模块的主入口 JavaScript 文件，该文件的 `exports` 变量会作为 `require()` 方法的返回值。类似于 `package.main`。
+默认值为: `'index.js'`
+
+它定义了当前模块的主入口 JavaScript 文件，该文件的 `exports` 变量会作为 `require()` 方法的返回值。类似于 node.js `package.main`。
 
 ## entries
 
@@ -96,6 +98,66 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 		
 指代 entries 目录下所有的 JavaScript 文件（但不包含子目录），以及 "pages/a.js" 这个 JavaScript 文件。
 
+
+## css
+
+类型 `Array`
+
+用来说明当前包的 CSS 文件，它的值是一个包含相对路径的数组，数组中可以包含多个文件，来指定多个 CSS，它们的顺序将会保留。
+
+为声明为 `cortex.css` 的样式文件，会被当做依赖来进行递归分析。因此，你可以依赖一个 CSS 包。
+
+#### 特殊说明
+
+如果你的项目中使用了 less（sass，或 stylus 等），则不能够将这些文件放到 `directories.css` 所指定的目录，这个目录中应该存放编译后的文件。
+
+这种情况下，可以将 less 等脚本编译到 `directories.css` 做指定的目录，并且可以使用 `scripts.prebuild` 来指定编译 less 需要的脚本命令，比如：
+
+```json
+{
+  "scripts": {
+    "prebuild": [
+      "grunt less"
+    ]
+  },
+  "css": [
+    "built_css/style.css"
+  ]
+}
+```
+
+并且将 less 脚本编译到 `'built_css'` 目录。
+
+#### 升级说明
+
+Cortex 3.x 升级到 Cortex 4.x 之后，需要将 `cortex.directories.css` 修改为 `cortex.css`，假若有如下的目录：
+
+```
+my-css/
+     |-- style.css
+     |-- abc.css
+```
+
+3.x, cortex.json
+
+```
+{
+  "directories": {
+    "css": "my-css"
+  }
+}
+```
+
+升级到 4.x, cortex.json
+
+```
+{
+  "css": [
+    "my-css/style.css",
+    "my-css/abc.css"
+  ]
+}
+```
 
 ## ignores
 
@@ -138,47 +200,14 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 
 目前这个值没有直接使用，而更多地根据 `cortex.main` 属性来确定入口 JavaScript 文件的位置。
 
-### directories.css
+### <del>directories.css</del>
 
-无默认值
-
-它用来说明 CSS 文件所存放的目录。如果这个值被定义了，但是 `directories.css` 对应的目录不存在，则会报错。
-
-#### 特殊说明
-
-如果你的项目中使用了 less（sass，或 stylus 等），则不能够将这些文件放到 `directories.css` 所指定的目录，这个目录中应该存放编译后的文件。
-
-这种情况下，可以将 less 等脚本编译到 `directories.css` 做指定的目录，并且可以使用 `scripts.prebuild` 来指定编译 less 需要的脚本命令，比如：
-
-```json
-{
-  "scripts": {
-    "prebuild": [
-      "grunt less"
-    ]
-  },
-  "directories": {
-    "css": "built_css"
-  }
-}
-```
-
-并且将 less 脚本编译到 `'built_css'` 目录。
-
-### directories.template
-
-用来存放模板文件。
-
-无默认值。如果这个值被定义了，但是 `directories.template` 对应的目录不存在，则会报错。
+Cortex 4.0.0 起，将不再支持此属性。
 
 
-如果 `directories.template` 已经定义，那么会尝试将这个值所对应的目录进行发布。
+### <del>directories.template</del>
 
-在将来的版本中，`directories.template` 将会有特殊的作用，因此避免将非模板的文件放到该目录中。
-
-#### 版本要求
-
-Cortex 3.27.0 及以上，neuron 5.1.0 及以上。
+Cortex 4.0.0 起，将不再支持此属性
 
 
 ### directories.src
@@ -245,9 +274,18 @@ cortex install jquery --save
 
 类型为 `Object`
 
-用来定义当前模块的动态依赖。
+用来定义当前包的动态依赖。
 
 类似的，你可以使用 `cortex install xxx --save-async`，来写入这个值。
+
+
+## devDependencies
+
+类型为 `Object`
+
+用来定义当前包的开发时依赖。
+
+类似的，你可以使用
 
 
 ## scripts
