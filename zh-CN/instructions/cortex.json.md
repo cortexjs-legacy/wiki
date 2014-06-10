@@ -220,9 +220,11 @@ Cortex 4.0.0 起，将不再支持此属性
 
 ### directories.src
 
-用来存放除 JavaScript，CSS，及模板文件之外的资源文件。该目录下的文件，可以通过 `require.resolve(path)` 来获取（要求 [neuron](https://github.com/kaelzhang/neuron) 版本至少为 5.1.0）。
+用来存放资源文件，存放到该目录下的文件，cortex 不会做任何处理，也不会依赖分析到他们。
 
-无默认值，如果这个值被定义了，但是 `directories.src` 对应的目录不存在，则会报错。
+该目录下的文件，可以通过 `require.resolve(path)` 来获取（要求 [neuron](https://github.com/kaelzhang/neuron) 版本至少为 5.1.0）。
+
+无默认值。如果这个值被定义了，但是 `directories.src` 对应的目录不存在，则会报错。
 
 假若项目结构为：
 
