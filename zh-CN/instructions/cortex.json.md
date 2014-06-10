@@ -19,10 +19,7 @@
   "keywords": [
     "ui",
     "calendar"
-  ],
-  "directories": {
-    "css": "css"
-  }
+  ]
 }
 ```
 
@@ -60,6 +57,16 @@ cortex 不允许在 cortex.json 中定义类似的属性，在我们的规范中
 默认值为: `'index.js'`
 
 它定义了当前模块的主入口 JavaScript 文件，该文件的 `exports` 变量会作为 `require()` 方法的返回值。类似于 node.js `package.main`。
+
+#### 特别说明
+
+`cortex.main`所指代的文件 与 `cortex.css` 至少需要存在一个，即，你的包可能有三种类型：
+
+- 纯 CSS 包
+- 纯 JavaScript 包
+- 同时包含 CSS 与 JavaScript 的包
+
+但不能以上三者都不是。否则，cortex 在 build 的时候会报错
 
 ## entries
 
@@ -177,6 +184,7 @@ my-css/
 
 这些文件需要使用 [.gitignore 的规范](http://git-scm.com/docs/gitignore) 来编写（中国本土的用户可能需要翻墙）。
 
+默认情况下，cortex 会忽略 `node_modules` 与 `neurons` 文件夹，但你可以在 ignore 文件中加上例外来包含他们。
 
 ## directories
 
